@@ -1,0 +1,24 @@
+{{input type="text" class="new-todo" placeholder="What needs to be done?" value=newTitle action="createTodo"}}
+<section class="main">
+  {{outlet}}
+  {{input type="checkbox" class="toggle-all" checked=allAreDone}}
+</section>
+<footer class="footer">
+  <span class="todo-count">
+    <strong>{{remaining}}</strong> {{inflection}} left
+  </span>
+  <ul class="filters">
+    <li>
+      {{#link-to "todos.index" activeClass="selected"}}All{{/link-to}}
+    </li>
+    <li>
+      {{#link-to "todos.active" activeClass="selected"}}Active{{/link-to}}
+    </li>
+    <li>
+      {{#link-to "todos.complete" activeClass="selected"}}Completed{{/link-to}}
+    </li>
+  </ul>
+  {{#if hasCompleted}}
+    <button {{action "clearCompleted"}} class="clear-completed">Clear completed ({{completed}})</button>
+  {{/if}}
+</footer>
